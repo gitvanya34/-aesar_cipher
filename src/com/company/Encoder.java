@@ -12,7 +12,6 @@ public class Encoder {
 
     public Encoder(int shift) {
         this.alphabet ="АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХчЦцЧчШшЩщЪъЫыЬьЭэЮюЯя";
-        this.shift = shift;
-    }
+        this.shift = shift;  }
 
 }
