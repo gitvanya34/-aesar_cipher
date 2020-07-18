@@ -13,16 +13,20 @@ public class СaesarСipher {
     }
 
     public СaesarСipher(int shift) {
-        String s="АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХчЦцЧчШшЩщЪъЫыЬьЭэЮюЯя";
+        String s="АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя";//АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя
         this.alphabet = s.toCharArray();
         this.shift = shift;
     }
     public void encoder(String msg)
     {
         message=msg.toCharArray();
-        for(char с: message)
-            с=symbolEncryption(с);
-        System.out.print(message);
+//        for(char с: message)
+//            с=symbolEncryption(с);
+        for(int i=0;i<message.length;i++)
+            message[i]=symbolEncryption(message[i]);
+        System.out.println("-------------------");
+        System.out.println(message);
+        System.out.println("-------------------");
     }
     public char symbolEncryption(char c)
     {
@@ -30,7 +34,7 @@ public class СaesarСipher {
 
         if(searchSymbol==-1)
             return c;
-        else if(searchSymbol+shift*2<=(alphabet.length))
+        else if(searchSymbol+shift*2<(alphabet.length))
             return alphabet[searchSymbol+shift*2];
         else
             return alphabet[ searchSymbol + shift * 2 - alphabet.length];
@@ -46,4 +50,22 @@ public class СaesarСipher {
         }
         return -1;
     }
+
+    public void  decoder(String msg)
+    {
+       shift=1;
+        message=msg.toCharArray();
+
+//        char[] message1;
+//        System.arraycopy(message,message1);
+
+        for( int k=0;k<alphabet.length;k++)
+        {
+            for (int i = 0; i < message.length; i++) {
+                message[i]=symbolEncryption(message[i]);
+            }
+            System.out.println(message);
+        }
+    }
+
 }
